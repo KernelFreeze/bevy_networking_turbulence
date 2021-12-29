@@ -9,6 +9,7 @@ license = "MIT"
 homepage = "https://github.com/smokku/bevy_networking_turbulence"
 repository = "https://github.com/smokku/bevy_networking_turbulence"
 keywords = ["bevy", "gamedev", "networking", "udp", "webrtc"]
+resolver = "2"
 categories = [
     "game-development",
     "network-programming",
@@ -27,7 +28,6 @@ use-webrtc = [
 ]
 
 [dependencies]
-bevy = {version = "0.5", default-features = false}
 turbulence = "0.3"
 naia-client-socket = { version = "0.6", features = ["multithread"] }
 bytes = "1.0"
@@ -42,15 +42,18 @@ futures-timer = "3.0"
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 naia-server-socket = "0.5"
 
+[dependencies.bevy]
+git = "https://github.com/bevyengine/bevy.git"
+default-features = false
+
 [dev-dependencies]
 clap = "2.33.3"
-bevy = { version = "0.5", default-features = false }
 serde = { version = "1.0", features = ["derive"] }
 simple_logger = "1"
-rand = { version = "0.7.3", features = ["wasm-bindgen"] }
+rand = { version = "0.8.4" }
 console_error_panic_hook = "0.1"
 console_log = "0.2"
-wasm-bindgen = "=0.2.69" # pin to Bevy's dependency
+wasm-bindgen = "0.2.78" # pin to Bevy's dependency
 
 [[example]]
 name = "channels"
